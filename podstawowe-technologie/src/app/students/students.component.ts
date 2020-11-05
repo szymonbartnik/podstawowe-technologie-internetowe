@@ -8,7 +8,7 @@ import {FormControl, FormGroup, Validators} from '@angular/forms';
 })
 export class StudentsComponent implements OnInit {
 
-  student: Student;
+  students: Student[] = [];
   studentForm = new FormGroup({
     name: new FormControl('', Validators.required),
     surname: new FormControl('', Validators.required),
@@ -22,11 +22,13 @@ export class StudentsComponent implements OnInit {
   }
 
   assignStudent(): void {
-    this.student = new Student(
+    const student = new Student(
       this.studentForm.get('name').value,
       this.studentForm.get('surname').value,
       this.studentForm.get('id').value
     );
+
+    this.students.push(student);
   }
 
 }
