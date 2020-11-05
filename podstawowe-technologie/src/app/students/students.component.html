@@ -1,5 +1,6 @@
 <b>Student:</b>
-<div>
+<button (click)="assignStudent('Agata', 'Stanisławska', 1122)">Przypisz dane studenta</button>
+<div *ngIf="student">
   <p>Imie: {{student.name}}</p>
   <p>Nazwisko: {{student.surname}}</p>
   <p>Nr indeksu: {{student.id}}</p>

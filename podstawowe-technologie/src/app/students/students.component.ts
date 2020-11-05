@@ -13,7 +13,10 @@ export class StudentsComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.student = new Student('Agata', 'Stanisławska', 2233);
+  }
+
+  assignStudent(name: string, surname: string, id: number): void {
+    this.student = new Student(name, surname, id);
   }
 
 }
