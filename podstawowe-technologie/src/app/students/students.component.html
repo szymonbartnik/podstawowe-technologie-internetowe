@@ -1,5 +1,24 @@
 <b>Student:</b>
-<button (click)="assignStudent('Agata', 'Stanisławska', 1122)">Przypisz dane studenta</button>
+<form [formGroup]="studentForm" (ngSubmit)="assignStudent()">
+
+  <label>
+    Imie:
+    <input type="text" formControlName="name">
+  </label>
+
+  <label>
+    Nazwisko:
+    <input type="text" formControlName="surname">
+  </label>
+
+  <label>
+    Indeks:
+    <input type="number" formControlName="id">
+  </label>
+
+  <button type="submit" [disabled]="!studentForm.valid">Submit</button>
+</form>
+
 <div *ngIf="student">
   <p>Imie: {{student.name}}</p>
   <p>Nazwisko: {{student.surname}}</p>

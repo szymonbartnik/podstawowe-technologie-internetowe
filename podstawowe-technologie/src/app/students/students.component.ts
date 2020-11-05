@@ -1,4 +1,5 @@
 import {Component, OnInit} from '@angular/core';
+import {FormControl, FormGroup, Validators} from '@angular/forms';
 
 @Component({
   selector: 'app-students',
@@ -8,6 +9,11 @@ import {Component, OnInit} from '@angular/core';
 export class StudentsComponent implements OnInit {
 
   student: Student;
+  studentForm = new FormGroup({
+    name: new FormControl('', Validators.required),
+    surname: new FormControl('', Validators.required),
+    id: new FormControl('', [Validators.required, Validators.min(1)]),
+  });
 
   constructor() {
   }
@@ -15,8 +21,12 @@ export class StudentsComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  assignStudent(name: string, surname: string, id: number): void {
-    this.student = new Student(name, surname, id);
+  assignStudent(): void {
+    this.student = new Student(
+      this.studentForm.get('name').value,
+      this.studentForm.get('surname').value,
+      this.studentForm.get('id').value
+    );
   }
 
 }
