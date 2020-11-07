@@ -1,0 +1,24 @@
+<a routerLink="">Wróć do listy studentów</a>
+
+<b>Student:</b>
+<form [formGroup]="studentForm" (ngSubmit)="assignStudent()">
+
+  <label>
+    Imie:
+    <input type="text" formControlName="name">
+  </label>
+
+  <label>
+    Nazwisko:
+    <input type="text" formControlName="surname">
+  </label>
+
+  <label>
+    Indeks:
+    <input [readOnly]="studentId != 0" type="number" formControlName="id">
+  </label>
+
+  <button type="submit" [disabled]="!studentForm.valid">
+    {{studentId === 0 ? 'Dodaj studenta':'Zapisz'}}
+  </button>
+</form>

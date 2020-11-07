@@ -1,24 +1,4 @@
-<b>Student:</b>
-<form [formGroup]="studentForm" (ngSubmit)="assignStudent()">
-
-  <label>
-    Imie:
-    <input type="text" formControlName="name">
-  </label>
-
-  <label>
-    Nazwisko:
-    <input type="text" formControlName="surname">
-  </label>
-
-  <label>
-    Indeks:
-    <input type="number" formControlName="id">
-  </label>
-
-  <button type="submit" [disabled]="!studentForm.valid">Submit</button>
-</form>
-
+<a routerLink="/add">Dodaj nowego studenta</a>
 <div *ngFor="let student of students">
-  <app-student-details [student]="student" (studentFullName)="showStudentFullNameAlert($event)"> </app-student-details>
+  <app-student-details routerLink="/edit/{{student.id}}" [student]="student" (studentFullName)="showStudentFullNameAlert($event)"> </app-student-details>
 </div>

@@ -1,5 +1,5 @@
 import {Component, OnInit} from '@angular/core';
-import {FormControl, FormGroup, Validators} from '@angular/forms';
+import {StudentService} from './student.service';
 
 @Component({
   selector: 'app-students',
@@ -9,26 +9,12 @@ import {FormControl, FormGroup, Validators} from '@angular/forms';
 export class StudentsComponent implements OnInit {
 
   students: Student[] = [];
-  studentForm = new FormGroup({
-    name: new FormControl('', Validators.required),
-    surname: new FormControl('', Validators.required),
-    id: new FormControl('', [Validators.required, Validators.min(1)]),
-  });
 
-  constructor() {
+  constructor(private studentService: StudentService) {
   }
 
   ngOnInit(): void {
-  }
-
-  assignStudent(): void {
-    const student = new Student(
-      this.studentForm.get('name').value,
-      this.studentForm.get('surname').value,
-      this.studentForm.get('id').value
-    );
-
-    this.students.push(student);
+    this.students = this.studentService.getStudents();
   }
 
   showStudentFullNameAlert($event: string): void {
