@@ -31,6 +31,9 @@ export class StudentsComponent implements OnInit {
     this.students.push(student);
   }
 
+  showStudentFullNameAlert($event: string): void {
+    alert($event);
+  }
 }
 
 export class Student {

@@ -20,7 +20,5 @@
 </form>
 
 <div *ngFor="let student of students">
-  <p>Imie: {{student.name}}</p>
-  <p>Nazwisko: {{student.surname}}</p>
-  <p>Nr indeksu: {{student.id}}</p>
+  <app-student-details [student]="student" (studentFullName)="showStudentFullNameAlert($event)"> </app-student-details>
 </div>
